@@ -10,16 +10,15 @@ var RandomNumberCharacteristic = function() {
     properties: ['read', 'notify'],
     value: null
   });
-
-  this._value = new Buffer(0);
 };
 
 util.inherits(RandomNumberCharacteristic, BlenoCharacteristic);
 
 RandomNumberCharacteristic.prototype.onReadRequest = function(offset, callback) {
-  console.log('EchoCharacteristic - onReadRequest: value = ' + this._value.toString('hex'));
+  let n = Math.random().toString()
+  console.log(`RandomNumberCharacteristic - onReadRequest: value = ${n.toString('hex')} (${n})`);
 
-  callback(this.RESULT_SUCCESS, Math.random().toString());
+  callback(this.RESULT_SUCCESS, new Buffer(n));
 };
 
 module.exports = RandomNumberCharacteristic;
