@@ -1,0 +1,17 @@
+{
+  "name": "ble-generator",
+  "version": "1.0.0",
+  "description": "A Bluetooth Sensor Generator",
+  "main": "src/index.js",
+  "author": "Taylor Graham",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "bleno": "^0.4.2"
+  },
+  "devDependencies": {
+    "dotenv": "^4.0.0"
+  }
+}
