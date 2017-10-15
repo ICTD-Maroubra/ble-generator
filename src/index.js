@@ -1,7 +1,6 @@
 require('dotenv').config()
 var bleno = require('bleno')
-var BlenoPrimaryService = bleno.PrimaryService
-var RandomNumberCharacteristic = require('./RandomNumberCharacteristic')
+var SensortagTemperatureSevice = require('./SensortagTemperatureSevice')
 
 console.log('bleno - echo');
 
@@ -20,12 +19,7 @@ bleno.on('advertisingStart', error => {
 
     if (!error) {
         bleno.setServices([
-          new BlenoPrimaryService({
-            uuid: 'ec00',
-            characteristics: [
-              new RandomNumberCharacteristic()
-            ]
-          })
+          new SensortagTemperatureSevice()
         ]);
       }
 })
