@@ -37,8 +37,20 @@ DataCharacteristic.prototype.onReadRequest = function(offset, callback) {
 };
 
 DataCharacteristic.prototype.onSubscribe = function(maxValueSize, updateValueCallback) {
-  console.log(`Data has been subscribed too`);  
-  callback(this.RESULT_SUCCESS, new Buffer());
+  console.log('subscribed too!');
+  this.intervalId = setInterval(function() {
+      //poll sensor or get value or something
+      updateValueCallback(new Buffer(new Date()));
+  }, 1000);
+};
+
+DataCharacteristic.prototype.onUnsubscribe = function() {
+  console.log('unsubscribed from!');
+  clearInterval(this.intervalId);
+};
+
+DataCharacteristic.prototype.onNotify = function() {
+  console.log('notified!');
 };
 
 ConfigCharacteristic.prototype.onReadRequest = function(offset, callback) {
