@@ -40,7 +40,7 @@ DataCharacteristic.prototype.onSubscribe = function(maxValueSize, updateValueCal
   console.log('subscribed too!');
   this.intervalId = setInterval(function() {
       //poll sensor or get value or something
-      updateValueCallback(new Buffer(new Date()));
+      updateValueCallback(new Buffer(new Date().getUTCSeconds().toString()));
   }, 1000);
 };
 
