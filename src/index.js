@@ -1,6 +1,6 @@
 require('dotenv').config()
 var bleno = require('bleno')
-var SensortagTemperatureSevice = require('./SensortagTemperatureSevice')
+var SensortagTemperatureSevice = require('./SensortagTemperatureService')
 
 console.log('bleno - echo');
 
@@ -19,7 +19,7 @@ bleno.on('advertisingStart', error => {
 
     if (!error) {
         bleno.setServices([
-          new SensortagTemperatureSevice()
+          SensortagTemperatureSevice
         ]);
       }
 })
